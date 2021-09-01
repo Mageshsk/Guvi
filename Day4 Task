@@ -20,6 +20,6 @@ req.onload=function(){
     var data=JSON.parse(req.response);
     for(var i in data)
     {
-        console.log(data[i].name,data[i].region,name,data[i].region);
+        console.log(data[i].name,data[i].region,data[i].subregion,data[i].population);
     }
 }
