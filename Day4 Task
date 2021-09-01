@@ -7,7 +7,7 @@ req.onload=function(){
     var data=JSON.parse(req.response);
     for(var i in data)
     {
-        console.log(data[i].name,data[i].capital);
+        console.log(data[i].flag);
     }
 }
 
