@@ -19,3 +19,25 @@ var data=JSON.parse(req.response);
 var result = data.filter((x)=>(x.population < 200000)).map((y)=> y.name);
 console.log(result);
 }
+
+1.d) Print the total population of countries using reduce function
+
+var req = new XMLHttpRequest();
+req.open('GET','https://restcountries.eu/rest/v2/all',true);
+req.send();
+req.onload=function(){
+var data=JSON.parse(req.response);
+var result = data.reduce((x,y)=>x+y.population,0);
+console.log(result);
+}
+
+1.e) Print the country which uses US Dollars as currency.
+
+var req = new XMLHttpRequest();
+req.open('GET','https://restcountries.eu/rest/v2/all',true);
+req.send();
+req.onload=function(){
+var data=JSON.parse(req.response);
+var result = data.filter((x)=>(x.code = "USD")).map((y)=> y.name);
+console.log(result);
+}
