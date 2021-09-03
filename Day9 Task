@@ -20,6 +20,16 @@ var result = data.filter((x)=>(x.population < 200000)).map((y)=> y.name);
 console.log(result);
 }
 
+1.c) Print the following details name, capital, flag using forEach function
+
+var req = new XMLHttpRequest();
+req.open('GET','https://restcountries.eu/rest/v2/all',true);
+req.send();
+req.onload=function(){
+var data=JSON.parse(req.response);
+data.forEach((x)=>console.log(x.name,x.capital,x.flag));
+}
+
 1.d) Print the total population of countries using reduce function
 
 var req = new XMLHttpRequest();
@@ -37,7 +47,15 @@ var req = new XMLHttpRequest();
 req.open('GET','https://restcountries.eu/rest/v2/all',true);
 req.send();
 req.onload=function(){
-var data=JSON.parse(req.response);
-var result = data.filter((x)=>(x.code = "USD")).map((y)=> y.name);
-console.log(result);
+    var data=JSON.parse(req.response);
+let cusd=data.filter((element)=>{
+    for(let i in element.currencies)
+    {
+        if(element.currencies[i].code == 'USD')
+        {
+            return true;
+        }
+    }
+}).map((country)=>country.name);
+console.log(cusd);
 }
